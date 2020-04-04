@@ -52,13 +52,11 @@ class Layout extends React.Component {
         <header>{header}</header>
         <Main>{children}</Main>
         <Footer>
-          © {new Date().getFullYear()}, A
+          © {new Date().getFullYear()}, Website by
           {` `}
           <a href="https://wolfonmoon.com">
             Wolf on Moon
           </a>
-          {` `}
-          site starter.
         </Footer>
       </div>
     )

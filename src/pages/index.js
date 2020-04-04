@@ -13,8 +13,13 @@ class Index extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="Projects & posts starter" />
+        <SEO title="Coronavirus / Covid-19" />
         <p>Track the spread of the pandemic by country.</p>
+        <p>
+          {new Date().getDate()}/
+          {new Date().getMonth()}/
+          {new Date().getFullYear()}
+        </p>
         <Data />
       </Layout>
     )

@@ -23,8 +23,9 @@ export default class Data extends React.Component {
           <table>
             <thead>
               <tr>
-                  <td><b>Country</b></td>
-                  <td><b>Number of Cases</b></td>
+                  <th></th>
+                  <th><b>Country</b></th>
+                  <th><b>Number of Cases</b></th>
                   <td><b>Number of Deaths</b></td>
                   <td><b>New Cases</b></td>
                   <td><b>New Deaths</b></td>
@@ -32,7 +33,7 @@ export default class Data extends React.Component {
               </thead>
             <tbody data={this.state.data}>
               {console.log(myData)}
-              {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed).map((i, index) => <tr key={index}><td>{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
+              {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed).map((i, index) => <tr key={index}><td>{index + 1}</td><td>{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
             </tbody>
           </table>
     )

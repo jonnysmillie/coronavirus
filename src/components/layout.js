@@ -52,6 +52,7 @@ class Layout extends React.Component {
         <header>{header}</header>
         <Main>{children}</Main>
         <Footer>
+          <p>All data from: <a href="https://documenter.getpostman.com/view/10808728/SzS8rjbc">https://documenter.getpostman.com/view/10808728/SzS8rjbc</a></p>
           © {new Date().getFullYear()}, Website by
           {` `}
           <a href="https://wolfonmoon.com">

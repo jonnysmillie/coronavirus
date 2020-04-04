@@ -13,25 +13,26 @@ export default class Data extends React.Component {
       .then(res => {
         const data = res.data.Countries;
         console.log(data);
-        this.setState({ data });
+        this.setState({ data: data });
       })
   }
 
-  render() {
+  render(data) {
+    const myData = [].concat(this.state.data)
     return (
           <table>
             <thead>
               <tr>
-                  <td>Country</td>
-                  <td>Number of Cases</td>
-                  <td>Number of Deaths</td>
-                  <td>New Cases</td>
-                  <td>New Deaths</td>
+                  <td><b>Country</b></td>
+                  <td><b>Number of Cases</b></td>
+                  <td><b>Number of Deaths</b></td>
+                  <td><b>New Cases</b></td>
+                  <td><b>New Deaths</b></td>
                 </tr>
               </thead>
-            <tbody>
-              {console.log(this.state.data)}
-              {this.state.data.map((i, index) => <tr key={index}><td>{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
+            <tbody data={this.state.data}>
+              {console.log(myData)}
+              {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed).map((i, index) => <tr key={index}><td>{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
             </tbody>
           </table>
     )

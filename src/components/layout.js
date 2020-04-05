@@ -13,6 +13,9 @@ const PageTitle = styled.h3`
 let Main = styled.main`
   padding: 1rem 20%;
   text-align: center;
+  @media(max-width: 678px){
+    padding: 1rem 1rem;
+  }
 `
 const Footer = styled.footer`
   text-align: center;

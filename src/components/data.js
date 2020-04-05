@@ -1,6 +1,27 @@
 import React from "react"
 import axios from "axios"
+import styled from 'styled-components'
+import { getCode, overwrite} from 'country-list'
+import FlagIcon from './FlagIcon.js'
+// const { getCode, getName } = require('country-list');
 
+overwrite([{
+  code: 'gb',
+  name: 'United Kingdom'
+}])
+
+const Table = styled.table`
+  th {
+    text-align: left;
+    background: rgba(255, 87, 2, 0.2);
+  }
+  tr:nth-child(odd) {
+    background-color: #fcfcfc;
+  }
+  td {
+    padding: 15px;
+  }
+`
 
 
 export default class Data extends React.Component {
@@ -12,7 +33,8 @@ export default class Data extends React.Component {
     axios.get(`https://api.covid19api.com/summary`)
       .then(res => {
         const data = res.data.Countries;
-        console.log(data);
+        let countryName = res.data.Countries.Country
+        // console.log(data);
         this.setState({ data: data });
       })
   }
@@ -20,22 +42,22 @@ export default class Data extends React.Component {
   render(data) {
     const myData = [].concat(this.state.data)
     return (
-          <table>
+          <Table>
             <thead>
               <tr>
                   <th></th>
                   <th><b>Country</b></th>
-                  <th><b>Number of Cases</b></th>
-                  <td><b>Number of Deaths</b></td>
-                  <td><b>New Cases</b></td>
-                  <td><b>New Deaths</b></td>
+                  <th><b>Total Cases</b></th>
+                  <th><b>Total Deaths</b></th>
+                  <th><b>New Cases</b></th>
+                  <th><b>New Deaths</b></th>
                 </tr>
-              </thead>
-            <tbody data={this.state.data}>
-              {console.log(myData)}
-              {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed).map((i, index) => <tr key={index}><td>{index + 1}</td><td>{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
+            </thead>
+            <tbody>
+              {console.log(myData[0])}
+    {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed).map((i, index) => <tr key={index}><td>{index + 1}</td><td><FlagIcon code={i.CountryCode.toLowerCase()} />{' '}{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
             </tbody>
-          </table>
+          </Table>
     )
   }
 }

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
+    "country-list": "^2.2.0",
     "gatsby": "^2.18.17",
     "gatsby-image": "^2.2.37",
     "gatsby-plugin-feed": "^2.3.25",
@@ -30,6 +31,7 @@
     "prismjs": "^1.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-flag-icon-css": "^1.0.25",
     "react-helmet": "^5.2.1",
     "react-is": "^16.13.1",
     "react-typography": "^0.16.19",

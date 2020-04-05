@@ -33,6 +33,7 @@ const Table = styled.table`
 export default class Data extends React.Component {
   state = {
     data: [],
+    active: false,
   }
 
   componentDidMount() {
@@ -41,27 +42,56 @@ export default class Data extends React.Component {
         const data = res.data.Countries;
         let countryName = res.data.Countries.Country
         // console.log(data);
-        this.setState({ data: data });
+        const sortedData = [].concat(res.data.Countries)
+        const newData = sortedData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
+        this.setState({ data: newData });
       })
+
   }
 
-  render(data) {
-    const myData = [].concat(this.state.data)
+  handleTotalDeathSort = () => {
+    let totalDeathSort = [...this.state.data].sort((a, b) => b.TotalDeaths - a.TotalDeaths)
+    this.setState({
+      data: totalDeathSort,
+    })
+  }
+  handleTotalCasesSort = () => {
+    let totalConfirmedSort = [...this.state.data].sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
+    this.setState({
+      data: totalConfirmedSort
+    })
+  }
+  handleNewDeathSort = () => {
+    let newDeathSort = [...this.state.data].sort((a, b) => b.NewDeaths - a.NewDeaths)
+    this.setState({
+      data: newDeathSort
+    })
+  }
+  handleNewCasesSort = () => {
+    let newConfirmedSort = [...this.state.data].sort((a, b) => b.NewConfirmed - a.NewConfirmed)
+    this.setState({
+      data: newConfirmedSort
+    })
+  }
+
+
+  render() {
+    //const myData = [].concat(this.state.data)
     return (
           <Table>
             <thead>
               <tr>
                   <th></th>
                   <th><b>Country</b></th>
-                  <th><b>Total Cases</b></th>
-                  <th><b>Total Deaths</b></th>
-                  <th><b>New Cases</b></th>
-                  <th><b>New Deaths</b></th>
+                  <th onClick={this.handleTotalCasesSort}><b>Total Cases</b></th>
+                  <th onClick={this.handleTotalDeathSort}><b>Total Deaths</b></th>
+                  <th onClick={this.handleNewCasesSort}><b>New Cases</b></th>
+                  <th onClick={this.handleNewDeathSort}><b>New Deaths</b></th>
                 </tr>
             </thead>
             <tbody>
-              {console.log(myData[0])}
-              {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
+              {console.log()}
+              {this.state.data
               .map((i, index) => 
               <tr key={index}>
                 <td>{index + 1}</td>

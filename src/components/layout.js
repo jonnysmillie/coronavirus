@@ -11,7 +11,7 @@ const PageTitle = styled.h3`
   width: 100%;
 `
 let Main = styled.main`
-  padding: 1rem 20%;
+  padding: 1rem 5%;
   text-align: center;
   @media(max-width: 678px){
     padding: 1rem 1rem;

@@ -2,10 +2,11 @@ import React from "react"
 import axios from "axios"
 import styled from 'styled-components'
 import { getCode, overwrite} from 'country-list'
+import FlagIcon from './FlagIcon.js'
 // const { getCode, getName } = require('country-list');
 
 overwrite([{
-  code: 'UK',
+  code: 'gb',
   name: 'United Kingdom'
 }])
 
@@ -45,7 +46,6 @@ export default class Data extends React.Component {
             <thead>
               <tr>
                   <th></th>
-                  <th><b>Country Code</b></th>
                   <th><b>Country</b></th>
                   <th><b>Total Cases</b></th>
                   <th><b>Total Deaths</b></th>
@@ -54,8 +54,8 @@ export default class Data extends React.Component {
                 </tr>
             </thead>
             <tbody>
-              {/*console.log(myData)*/}
-              {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed).map((i, index) => <tr key={index}><td>{index + 1}</td><td>{getCode(i.Country)}</td><td>{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
+              {console.log(myData[0])}
+    {myData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed).map((i, index) => <tr key={index}><td>{index + 1}</td><td><FlagIcon code={i.CountryCode.toLowerCase()} />{' '}{i.Country}</td><td>{i.TotalConfirmed}</td><td>{i.TotalDeaths}</td><td>{i.NewConfirmed}</td><td>{i.NewDeaths}</td></tr>)}
             </tbody>
           </Table>
     )

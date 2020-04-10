@@ -194,7 +194,7 @@ export default class Data extends React.Component {
             <tbody>
               {console.log()}
               <tr>
-                    <td>0</td>
+                    <td></td>
                     <td>🌍 World</td>
                     <td><NumberFormat value={world.TotalConfirmed} displayType={'text'} thousandSeparator={true} /></td>
                     <td><NumberFormat value={world.TotalDeaths} displayType={'text'} thousandSeparator={true} /></td>

@@ -1,10 +1,20 @@
 
+h2 {
+  margin-top:0;
+  color:#EF7B45
+}
 th:hover {
   cursor: pointer;
 }
-tr:nth-child(even) {background: rgba(255, 87, 2, 0.1)}
+tr:first-child{
+  position: sticky;
+}
+tr:nth-child(even) {
+  background: #CDEDF6;
+}
 th{
-  background: rgba(255, 87, 2, 0.4)
+  background: rgba(239, 123, 69, 0.5);
+  color:#042A2B;
 }
 td:first-child {
   padding-left:1rem;

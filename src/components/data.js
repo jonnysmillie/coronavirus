@@ -39,7 +39,7 @@ export default class Data extends React.Component {
     world: [],
     active: 'TotalConfirmed',
     column: 'TotalConfirmed',
-    direction: 'ascending',
+    direction: 'descending',
     isLoading: true
   }
 
@@ -73,7 +73,7 @@ export default class Data extends React.Component {
           data: data,
           world: world,
           isLoading: false,
-          direction: 'ascending',
+          direction: 'descending',
           active: 'TotalConfirmed',
           column: 'TotalConfirmed',
         });
@@ -97,7 +97,7 @@ export default class Data extends React.Component {
       this.setState({
         column: clickedColumn,
         data: _.sortBy(data, [clickedColumn]),
-        direction: 'descending',
+        direction: 'ascending',
         active: clickedColumn
       })
 
@@ -108,7 +108,7 @@ export default class Data extends React.Component {
 
     this.setState({
       data: data.reverse(),
-      direction: direction === 'descending' ? 'ascending' : 'descending',
+      direction: direction === 'ascending' ? 'descending' : 'ascending',
     })
   }
 
@@ -152,12 +152,12 @@ export default class Data extends React.Component {
   render() {
     if (this.state.isLoading &&
       this.state.msElapsed > this.showSpinnerIfReturnGreaterThanMs) {
-      return <div><Loader
-      type="Circles"
-      color="#ff5702"
-      height={100}
-      width={100}
-      timeout={3000}  /><p>Getting the latest data...</p></div>
+      return <Loader
+      type="ThreeDots"
+      color="#5EB1BF"
+      height={200}
+      width={200}
+      timeout={3000}  />
     } else if (this.state.isLoading &&
         this.state.msElapsed <= this.showSpinnerIfReturnGreaterThanMs) {
         return (null);
@@ -179,7 +179,7 @@ export default class Data extends React.Component {
           <Table sortable celled fixed>
             <thead>
               <tr>
-                  <th>{console.log(active)}</th>
+                  <th></th>
                   <Table.HeaderCell
                     sorted={column === 'Country' ? direction : null}
                     onClick={this.handleSort('Country')}

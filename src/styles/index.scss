@@ -1,7 +1,7 @@
 
 h2 {
   margin-top:0;
-  color:#EF7B45
+  color:#ff5700
 }
 th:hover {
   cursor: pointer;
@@ -10,10 +10,10 @@ tr:first-child{
   position: sticky;
 }
 tr:nth-child(even) {
-  background: #CDEDF6;
+  background: rgba(255, 87, 0, 0.3);
 }
 th{
-  background: #8EA0A5;
+  background: rgba(255, 87, 0, 0.7);
   color:#042A2B;
 }
 td:first-child {
@@ -24,4 +24,11 @@ td:first-child {
 }
 .active.ascending:after {
   content: '👇';
+}
+p {
+  margin-bottom:0
+}
+h1 {
+  margin-top:1rem;
+  margin-bottom: 0;;
 }

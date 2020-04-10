@@ -35,6 +35,7 @@ overwrite([{
 export default class Data extends React.Component {
   state = {
     data: [],
+    world: [],
     active: 'TotalConfirmed',
     column: 'TotalConfirmed',
     direction: 'ascending',
@@ -46,9 +47,11 @@ export default class Data extends React.Component {
         //const data = res.data.Countries;
         // let countryName = res.data.Countries.Country
         // console.log(data);
+        const world = res.data.Global
         const sortedData = [].concat(res.data.Countries)
         const data = sortedData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
-        this.setState({ data: data });
+        this.setState({ data: data, world: world });
+        console.log(world)
       })
 
   }
@@ -114,7 +117,7 @@ export default class Data extends React.Component {
 
   render() {
     //const myData = [].concat(this.state.data)
-    const { column, data, direction, active } = this.state
+    const { column, data, direction, active, world } = this.state
     // <thead>
     //   <tr>
     //       <th></th>
@@ -190,6 +193,14 @@ export default class Data extends React.Component {
             </thead>
             <tbody>
               {console.log()}
+              <tr>
+                    <td>0</td>
+                    <td>🌍 World</td>
+                    <td><NumberFormat value={world.TotalConfirmed} displayType={'text'} thousandSeparator={true} /></td>
+                    <td><NumberFormat value={world.TotalDeaths} displayType={'text'} thousandSeparator={true} /></td>
+                    <td><NumberFormat value={world.NewConfirmed} displayType={'text'} thousandSeparator={true} /></td>
+                    <td><NumberFormat value={world.NewDeaths} displayType={'text'} thousandSeparator={true} /></td>
+              </tr>
               {data
               .map((i, index) => 
               <tr key={index}>

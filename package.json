@@ -38,6 +38,7 @@
     "react-is": "^16.13.1",
     "react-number-format": "^4.4.1",
     "react-typography": "^0.16.19",
+    "semantic-ui-react": "^0.88.2",
     "styled-components": "^5.0.1",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75",

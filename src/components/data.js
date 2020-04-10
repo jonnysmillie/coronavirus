@@ -33,7 +33,7 @@ const Table = styled.table`
 export default class Data extends React.Component {
   state = {
     data: [],
-    active: false,
+    active: {totalCases: true, totalDeaths: false, newCases: false, newDeaths: false},
   }
 
   componentDidMount() {
@@ -48,29 +48,32 @@ export default class Data extends React.Component {
       })
 
   }
-
+  handleTotalCasesSort = () => {
+    let totalConfirmedSort = [...this.state.data].sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
+    this.setState({
+      data: totalConfirmedSort,
+      active: {totalCases: true, totalDeaths: false, newCases: false, newDeaths: false},
+    })
+  }
   handleTotalDeathSort = () => {
     let totalDeathSort = [...this.state.data].sort((a, b) => b.TotalDeaths - a.TotalDeaths)
     this.setState({
       data: totalDeathSort,
-    })
-  }
-  handleTotalCasesSort = () => {
-    let totalConfirmedSort = [...this.state.data].sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
-    this.setState({
-      data: totalConfirmedSort
-    })
-  }
-  handleNewDeathSort = () => {
-    let newDeathSort = [...this.state.data].sort((a, b) => b.NewDeaths - a.NewDeaths)
-    this.setState({
-      data: newDeathSort
+      active: {totalCases: false, totalDeaths: true, newCases: false, newDeaths: false},
     })
   }
   handleNewCasesSort = () => {
     let newConfirmedSort = [...this.state.data].sort((a, b) => b.NewConfirmed - a.NewConfirmed)
     this.setState({
-      data: newConfirmedSort
+      data: newConfirmedSort,
+      active: {totalCases: false, totalDeaths: false, newCases: true, newDeaths: false},
+    })
+  }
+  handleNewDeathSort = () => {
+    let newDeathSort = [...this.state.data].sort((a, b) => b.NewDeaths - a.NewDeaths)
+    this.setState({
+      data: newDeathSort,
+      active: {totalCases: false, totalDeaths: false, newCases: false, newDeaths: true},
     })
   }
 
@@ -83,10 +86,10 @@ export default class Data extends React.Component {
               <tr>
                   <th></th>
                   <th><b>Country</b></th>
-                  <th onClick={this.handleTotalCasesSort}><b>Total Cases</b></th>
-                  <th onClick={this.handleTotalDeathSort}><b>Total Deaths</b></th>
-                  <th onClick={this.handleNewCasesSort}><b>New Cases</b></th>
-                  <th onClick={this.handleNewDeathSort}><b>New Deaths</b></th>
+                  <th className={this.state.active.totalCases ? 'active' : null} onClick={this.handleTotalCasesSort}><b>Total Cases</b></th>
+                  <th className={this.state.active.totalDeaths ? 'active' : null} onClick={this.handleTotalDeathSort}><b>Total Deaths</b></th>
+                  <th className={this.state.active.newCases ? 'active' : null} onClick={this.handleNewCasesSort}><b>New Cases</b></th>
+                  <th className={this.state.active.newDeaths ? 'active' : null} onClick={this.handleNewDeathSort}><b>New Deaths</b></th>
                 </tr>
             </thead>
             <tbody>

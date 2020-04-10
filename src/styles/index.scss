@@ -3,7 +3,13 @@ th:hover {
 }
 
 .active:after {
-  color:green;
+  color:#ff5702;
   font-weight: bold;
-  content: ' \25BE';
+}
+.active.descending:after {
+  content: '▼';
+}
+.active.ascending:after {
+  
+  content: '▲';
 }

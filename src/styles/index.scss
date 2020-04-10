@@ -6,6 +6,9 @@ tr:nth-child(even) {background: rgba(255, 87, 2, 0.1)}
 th{
   background: rgba(255, 87, 2, 0.4)
 }
+td:first-child {
+  padding-left:1rem;
+}
 .active.descending:after {
   content: '☝️';
 }

@@ -96,12 +96,10 @@ export default class Data extends React.Component {
     if (column !== clickedColumn) {
       this.setState({
         column: clickedColumn,
-        data: _.sortBy(data, [clickedColumn]),
-        direction: 'ascending',
+        data: _.sortBy(data, [clickedColumn]).reverse(),
+        direction: 'descending',
         active: clickedColumn
       })
-
-      {console.log( data)}
 
       return
     }

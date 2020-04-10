@@ -36,8 +36,8 @@ export default class Data extends React.Component {
   state = {
     data: [],
     active: 'TotalConfirmed',
-    column: null,
-    direction: null,
+    column: 'TotalConfirmed',
+    direction: 'ascending',
   }
 
   componentDidMount() {

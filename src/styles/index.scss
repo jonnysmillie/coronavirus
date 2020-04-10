@@ -1,15 +1,14 @@
+
 th:hover {
   cursor: pointer;
 }
-
-.active:after {
-  color:#ff5702;
-  font-weight: bold;
+tr:nth-child(even) {background: rgba(255, 87, 2, 0.1)}
+th{
+  background: rgba(255, 87, 2, 0.4)
 }
 .active.descending:after {
-  content: '▼';
+  content: '☝️';
 }
 .active.ascending:after {
-  
-  content: '▲';
+  content: '👇';
 }

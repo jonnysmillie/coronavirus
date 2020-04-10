@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Coronavirus/Covid 19`,
+    title: `Coronavirus/Covid 19 🦠`,
     author: `Wolf on Moon`,
     description: `Track the spread of the pandemic by country.`,
     siteUrl: `https://starter-for-ten.netlify.com/`,

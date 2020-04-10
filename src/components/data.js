@@ -6,6 +6,7 @@ import { getCode, overwrite} from 'country-list'
 import FlagIcon from './FlagIcon.js'
 import NumberFormat from 'react-number-format'
 import { Table } from 'semantic-ui-react'
+import Loader from 'react-loader-spinner'
 // const { getCode, getName } = require('country-list');
 
 overwrite([{
@@ -39,9 +40,27 @@ export default class Data extends React.Component {
     active: 'TotalConfirmed',
     column: 'TotalConfirmed',
     direction: 'ascending',
+    isLoading: true
   }
 
-  componentDidMount() {
+  constructor() {
+    super();
+    this.timeIncrementMs = 50;
+    this.showSpinnerIfReturnGreaterThanMs = 200;
+    this.state = {
+        isLoading: true,
+        msElapsed: 0
+    };
+  }
+  componentWillUnmount() {
+    clearInterval(this.incrementer);
+  }
+  componentWillMount() {
+    this.incrementer = setInterval(() =>
+            this.setState({
+                msElapsed: this.state.msElapsed + this.timeIncrementMs
+            })
+        , this.timeIncrementMs);
     axios.get(`https://api.covid19api.com/summary`)
       .then(res => {
         //const data = res.data.Countries;
@@ -50,9 +69,24 @@ export default class Data extends React.Component {
         const world = res.data.Global
         const sortedData = [].concat(res.data.Countries)
         const data = sortedData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
-        this.setState({ data: data, world: world });
-        console.log(world)
+        this.setState({
+          data: data,
+          world: world,
+          isLoading: false,
+          direction: 'ascending',
+          active: 'TotalConfirmed',
+          column: 'TotalConfirmed',
+        });
       })
+        .catch(error => {
+            if (error.response) {
+                console.log(error.responderEnd);
+            }
+        });
+}
+
+  componentDidMount() {
+    
 
   }
   
@@ -116,6 +150,18 @@ export default class Data extends React.Component {
 
 
   render() {
+    if (this.state.isLoading &&
+      this.state.msElapsed > this.showSpinnerIfReturnGreaterThanMs) {
+      return <div><Loader
+      type="Circles"
+      color="#ff5702"
+      height={100}
+      width={100}
+      timeout={3000}  /><p>Getting the latest data...</p></div>
+    } else if (this.state.isLoading &&
+        this.state.msElapsed <= this.showSpinnerIfReturnGreaterThanMs) {
+        return (null);
+    }
     //const myData = [].concat(this.state.data)
     const { column, data, direction, active, world } = this.state
     // <thead>

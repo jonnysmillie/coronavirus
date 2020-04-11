@@ -4,6 +4,7 @@ module.exports = {
     author: `Wolf on Moon`,
     description: `Track the spread of the pandemic by country.`,
     siteUrl: `https://starter-for-ten.netlify.com/`,
+    metaImg: `https://corona-virus-covid-19.netlify.com/static/covid.png`
   },
   plugins: [
     {

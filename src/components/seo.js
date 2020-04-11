@@ -11,7 +11,7 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import metaImg from '../../content/assets/covid.png'
 
-console.log(metaImg)
+//console.log(metaImg)
 
 function SEO({ description, lang, meta, title, metaImg }) {
   const { site } = useStaticQuery(
@@ -22,6 +22,7 @@ function SEO({ description, lang, meta, title, metaImg }) {
             title
             description
             author
+            metaImg
           }
         }
       }

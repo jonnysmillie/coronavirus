@@ -11,6 +11,8 @@ import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import metaImg from '../../content/assets/covid.png'
 
+console.log(metaImg)
+
 function SEO({ description, lang, meta, title, metaImg }) {
   const { site } = useStaticQuery(
     graphql`
@@ -27,7 +29,6 @@ function SEO({ description, lang, meta, title, metaImg }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const metaImage = metaImg
 
   return (
     <Helmet
@@ -55,7 +56,7 @@ function SEO({ description, lang, meta, title, metaImg }) {
         },
         {
         property: 'og:image',
-        content: metaImage 
+        content: metaImg
         },
         {
           name: `twitter:card`,
@@ -75,7 +76,7 @@ function SEO({ description, lang, meta, title, metaImg }) {
         },
         {
           name: 'twitter:image',
-          content: metaImage
+          content: metaImg
         },
       ].concat(meta)}
     />

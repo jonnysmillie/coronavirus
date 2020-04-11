@@ -15,10 +15,19 @@ tr:nth-child(even) {
 th{
   background: rgba(255, 87, 0, 0.7);
   color:#042A2B;
-  padding:15px;
+  padding:1rem;
+  padding-top:0.25rem;
+  padding-bottom:0.25rem;
+  line-height:0.9;
+  font-size: 0.9rem;
 }
 td:first-child {
   padding-left:1rem;
+}
+td {
+  padding-top:2px;
+  padding-bottom:2px;
+  font-size: 0.9rem;
 }
 .active.descending:after {
   content: '☝️';

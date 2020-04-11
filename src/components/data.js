@@ -212,6 +212,17 @@ export default class Data extends React.Component {
                     Total deaths
                   </Table.HeaderCell>
                   <Table.HeaderCell
+                    sorted={column === 'TotalRecovered' ? direction : null}
+                    onClick={this.handleSort('TotalRecovered')}
+                    className={
+                      active === 'TotalRecovered' ? 'active' : null
+                      + ' ' +
+                      direction === 'descending' ? 'descending' : 'ascending'
+                    }
+                  >
+                    Total Recovered
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
                     sorted={column === 'NewConfirmed' ? direction : null}
                     onClick={this.handleSort('NewConfirmed')}
                     className={
@@ -234,17 +245,6 @@ export default class Data extends React.Component {
                     New deaths
                   </Table.HeaderCell>
                   <Table.HeaderCell
-                    sorted={column === 'TotalRecovered' ? direction : null}
-                    onClick={this.handleSort('TotalRecovered')}
-                    className={
-                      active === 'TotalRecovered' ? 'active' : null
-                      + ' ' +
-                      direction === 'descending' ? 'descending' : 'ascending'
-                    }
-                  >
-                    Total Recovered
-                  </Table.HeaderCell>
-                  <Table.HeaderCell
                     sorted={column === 'NewRecovered' ? direction : null}
                     onClick={this.handleSort('NewRecovered')}
                     className={
@@ -264,9 +264,9 @@ export default class Data extends React.Component {
                     <td>🌍 World</td>
                     <td><NumberFormat value={world.TotalConfirmed} displayType={'text'} thousandSeparator={true} /></td>
                     <td><NumberFormat value={world.TotalDeaths} displayType={'text'} thousandSeparator={true} /></td>
+                    <td><NumberFormat value={world.TotalRecovered} displayType={'text'} thousandSeparator={true} /></td>
                     <td><NumberFormat value={world.NewConfirmed} displayType={'text'} thousandSeparator={true} /></td>
                     <td><NumberFormat value={world.NewDeaths} displayType={'text'} thousandSeparator={true} /></td>
-                    <td><NumberFormat value={world.TotalRecovered} displayType={'text'} thousandSeparator={true} /></td>
                     <td><NumberFormat value={world.NewRecovered} displayType={'text'} thousandSeparator={true} /></td>
               </tr>
               {data
@@ -279,9 +279,9 @@ export default class Data extends React.Component {
                 </td>
                 <td><NumberFormat value={i.TotalConfirmed} displayType={'text'} thousandSeparator={true}/></td>
                 <td><NumberFormat value={i.TotalDeaths} displayType={'text'} thousandSeparator={true}/></td>
+                <td><NumberFormat value={i.TotalRecovered} displayType={'text'} thousandSeparator={true}/></td>
                 <td><NumberFormat value={i.NewConfirmed} displayType={'text'} thousandSeparator={true}/></td>
                 <td><NumberFormat value={i.NewDeaths} displayType={'text'} thousandSeparator={true}/></td>
-                <td><NumberFormat value={i.TotalRecovered} displayType={'text'} thousandSeparator={true}/></td>
                 <td><NumberFormat value={i.NewRecovered} displayType={'text'} thousandSeparator={true}/></td>
               </tr>)}
             </tbody>

@@ -233,6 +233,28 @@ export default class Data extends React.Component {
                   >
                     New deaths
                   </Table.HeaderCell>
+                  <Table.HeaderCell
+                    sorted={column === 'TotalRecovered' ? direction : null}
+                    onClick={this.handleSort('TotalRecovered')}
+                    className={
+                      active === 'TotalRecovered' ? 'active' : null
+                      + ' ' +
+                      direction === 'descending' ? 'descending' : 'ascending'
+                    }
+                  >
+                    Total Recovered
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
+                    sorted={column === 'NewRecovered' ? direction : null}
+                    onClick={this.handleSort('NewRecovered')}
+                    className={
+                      active === 'NewRecovered' ? 'active' : null
+                      + ' ' +
+                      direction === 'descending' ? 'descending' : 'ascending'
+                    }
+                  >
+                    New Recovered
+                  </Table.HeaderCell>
                 </tr>
             </thead>
             <tbody>
@@ -244,6 +266,8 @@ export default class Data extends React.Component {
                     <td><NumberFormat value={world.TotalDeaths} displayType={'text'} thousandSeparator={true} /></td>
                     <td><NumberFormat value={world.NewConfirmed} displayType={'text'} thousandSeparator={true} /></td>
                     <td><NumberFormat value={world.NewDeaths} displayType={'text'} thousandSeparator={true} /></td>
+                    <td><NumberFormat value={world.TotalRecovered} displayType={'text'} thousandSeparator={true} /></td>
+                    <td><NumberFormat value={world.NewRecovered} displayType={'text'} thousandSeparator={true} /></td>
               </tr>
               {data
               .map((i, index) => 
@@ -257,6 +281,8 @@ export default class Data extends React.Component {
                 <td><NumberFormat value={i.TotalDeaths} displayType={'text'} thousandSeparator={true}/></td>
                 <td><NumberFormat value={i.NewConfirmed} displayType={'text'} thousandSeparator={true}/></td>
                 <td><NumberFormat value={i.NewDeaths} displayType={'text'} thousandSeparator={true}/></td>
+                <td><NumberFormat value={i.TotalRecovered} displayType={'text'} thousandSeparator={true}/></td>
+                <td><NumberFormat value={i.NewRecovered} displayType={'text'} thousandSeparator={true}/></td>
               </tr>)}
             </tbody>
           </Table>

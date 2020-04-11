@@ -9,9 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import metaImg from '../../content/assets/covid.png'
+// import metaImg from '../../content/assets/covid.png'
 
-//console.log(metaImg)
+// console.log(metaImg)
 
 function SEO({ description, lang, meta, title, metaImg }) {
   const { site } = useStaticQuery(
@@ -57,7 +57,7 @@ function SEO({ description, lang, meta, title, metaImg }) {
         },
         {
         property: 'og:image',
-        content: metaImg
+        content: 'https://corona-virus-covid-19.netlify.com/covid.png'
         },
         {
           name: `twitter:card`,
@@ -77,7 +77,7 @@ function SEO({ description, lang, meta, title, metaImg }) {
         },
         {
           name: 'twitter:image',
-          content: metaImg
+          content: 'https://corona-virus-covid-19.netlify.com/covid.png'
         },
       ].concat(meta)}
     />

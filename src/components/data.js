@@ -65,7 +65,7 @@ export default class Data extends React.Component {
       .then(res => {
         //const data = res.data.Countries;
         // let countryName = res.data.Countries.Country
-        // console.log(data);
+        console.log(data);
         const world = res.data.Global
         const sortedData = [].concat(res.data.Countries)
         const data = sortedData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
@@ -80,7 +80,7 @@ export default class Data extends React.Component {
       })
         .catch(error => {
             if (error.response) {
-                console.log(error.responderEnd);
+                console.log(error.response);
             }
         });
 }

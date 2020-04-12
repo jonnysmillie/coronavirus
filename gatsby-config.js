@@ -59,6 +59,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-1555166514794222`
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Coronavirus / Covid-19`,

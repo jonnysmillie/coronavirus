@@ -63,7 +63,7 @@ export default class Data extends React.Component {
       .then(res => {
         //const data = res.data.Countries;
         // let countryName = res.data.Countries.Country
-        console.log(res.data.Countries);
+        // console.log(res.data.Countries);
         const world = res.data.Global
         const sortedData = [].concat(res.data.Countries)
         const data = sortedData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
@@ -179,10 +179,10 @@ export default class Data extends React.Component {
             <Table sortable celled fixed>
             <thead>
               <tr>
-              <Table.HeaderCell colspan={2}></Table.HeaderCell>
-              <Table.HeaderCell colspan={2}>Cases</Table.HeaderCell>
-              <Table.HeaderCell colspan={2}>Recovered</Table.HeaderCell>
-              <Table.HeaderCell colspan={2}>Deaths</Table.HeaderCell>
+              <Table.HeaderCell colSpan={2}></Table.HeaderCell>
+              <Table.HeaderCell colSpan={2}>Cases</Table.HeaderCell>
+              <Table.HeaderCell colSpan={2}>Recovered</Table.HeaderCell>
+              <Table.HeaderCell colSpan={2}>Deaths</Table.HeaderCell>
               </tr>
             </thead>
               <thead>

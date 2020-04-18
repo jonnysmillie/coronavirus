@@ -183,6 +183,7 @@ export default class Data extends React.Component {
               <Table.HeaderCell colSpan={2}>Cases</Table.HeaderCell>
               <Table.HeaderCell colSpan={2}>Recovered</Table.HeaderCell>
               <Table.HeaderCell colSpan={2}>Deaths</Table.HeaderCell>
+              <Table.HeaderCell colSpan={2}>Ratios</Table.HeaderCell>
               </tr>
             </thead>
               <thead>
@@ -265,8 +266,11 @@ export default class Data extends React.Component {
                       }
                     >
                       New
+                    </Table.HeaderCell>                    
+                    <Table.HeaderCell>
+                    Recovery
                     </Table.HeaderCell>
-                    
+                    <Table.HeaderCell>Death</Table.HeaderCell>
                   </tr>
               </thead>
               <tbody>
@@ -279,7 +283,9 @@ export default class Data extends React.Component {
                       <td><NumberFormat value={world.TotalRecovered} displayType={'text'} thousandSeparator={true} /></td>
                       <td><NumberFormat value={world.NewRecovered} displayType={'text'} thousandSeparator={true} /></td>
                       <td><NumberFormat value={world.TotalDeaths} displayType={'text'} thousandSeparator={true} /></td>
-                      <td><NumberFormat value={world.NewDeaths} displayType={'text'} thousandSeparator={true} /></td>      
+                      <td><NumberFormat value={world.NewDeaths} displayType={'text'} thousandSeparator={true} /></td>                      
+                      <td><NumberFormat value={world.TotalRecovered / world.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2} /></td>      
+                      <td><NumberFormat value={world.TotalDeaths / world.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2} /></td>
                 </tr>
                 {data
                 .map((i, index) => 
@@ -294,7 +300,9 @@ export default class Data extends React.Component {
                   <td><NumberFormat value={i.TotalRecovered} displayType={'text'} thousandSeparator={true}/></td>
                   <td><NumberFormat value={i.NewRecovered} displayType={'text'} thousandSeparator={true}/></td>
                   <td><NumberFormat value={i.TotalDeaths} displayType={'text'} thousandSeparator={true}/></td>
-                  <td><NumberFormat value={i.NewDeaths} displayType={'text'} thousandSeparator={true}/></td>
+                  <td><NumberFormat value={i.NewDeaths} displayType={'text'} thousandSeparator={true}/></td>                  
+                  <td><NumberFormat value={i.TotalRecovered / i.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
+                  <td><NumberFormat value={i.TotalDeaths / i.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
                 </tr>)}
               </tbody>
             </Table>

@@ -64,8 +64,21 @@ export default class Data extends React.Component {
         //const data = res.data.Countries;
         // let countryName = res.data.Countries.Country
         // console.log(res.data.Countries);
-        const world = res.data.Global
         const sortedData = [].concat(res.data.Countries)
+         sortedData.map((i, index) => 
+        //   {const Recovered = i.TotalRecovered / i.TotalConfirmed * 100},
+          (i.Recovered = i.TotalRecovered / i.TotalConfirmed * 100) +
+          (i.Deaths = i.TotalDeaths / i.TotalConfirmed * 100) +
+          (i.Recovered ? '' : i.Recovered = 0) +
+          (i.Deaths ? '' : i.Deaths = 0)
+          
+         )
+        const world = res.data.Global
+        
+        console.log(sortedData)
+
+        const ratios = sortedData.sort((a, b) => b.Deaths - a.Deaths)
+        console.log(ratios)
         const data = sortedData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
         this.setState({
           data: data,
@@ -98,6 +111,7 @@ export default class Data extends React.Component {
         direction: 'descending',
         active: clickedColumn
       })
+      console.log(clickedColumn)
 
       return
     }
@@ -267,10 +281,28 @@ export default class Data extends React.Component {
                     >
                       New
                     </Table.HeaderCell>                    
-                    <Table.HeaderCell>
-                    Recovery
+                    <Table.HeaderCell
+                      sorted={column === 'Recovered' ? direction : null}
+                      onClick={this.handleSort('Recovered')}
+                      className={
+                        active === 'Recovered' ? 'active' : null
+                        + ' ' +
+                        direction === 'descending' ? 'descending' : 'ascending'
+                      }
+                    >
+                    Recovered
                     </Table.HeaderCell>
-                    <Table.HeaderCell>Death</Table.HeaderCell>
+                    <Table.HeaderCell
+                      sorted={column === 'Deaths' ? direction : null}
+                      onClick={this.handleSort('Deaths')}
+                      className={
+                        active === 'Deaths' ? 'active' : null
+                        + ' ' +
+                        direction === 'descending' ? 'descending' : 'ascending'
+                      }
+                    >
+                    Deaths
+                    </Table.HeaderCell>
                   </tr>
               </thead>
               <tbody>
@@ -301,8 +333,8 @@ export default class Data extends React.Component {
                   <td><NumberFormat value={i.NewRecovered} displayType={'text'} thousandSeparator={true}/></td>
                   <td><NumberFormat value={i.TotalDeaths} displayType={'text'} thousandSeparator={true}/></td>
                   <td><NumberFormat value={i.NewDeaths} displayType={'text'} thousandSeparator={true}/></td>                  
-                  <td><NumberFormat value={i.TotalRecovered / i.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
-                  <td><NumberFormat value={i.TotalDeaths / i.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
+                  <td><NumberFormat value={i.Recovered} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
+                  <td><NumberFormat value={i.Deaths} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
                 </tr>)}
               </tbody>
             </Table>

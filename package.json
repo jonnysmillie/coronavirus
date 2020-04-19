@@ -40,6 +40,7 @@
     "react-is": "^16.13.1",
     "react-loader-spinner": "^3.1.14",
     "react-number-format": "^4.4.1",
+    "react-trend": "^1.2.5",
     "react-typography": "^0.16.19",
     "semantic-ui-react": "^0.88.2",
     "styled-components": "^5.0.1",

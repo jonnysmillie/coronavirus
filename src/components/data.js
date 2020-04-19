@@ -8,6 +8,7 @@ import NumberFormat from 'react-number-format'
 import { Table } from 'semantic-ui-react'
 import Loader from 'react-loader-spinner'
 import moment from 'moment'
+import Trend from 'react-trend'
 // const { getCode, getName } = require('country-list');
 
 
@@ -66,7 +67,22 @@ export default class Data extends React.Component {
         // console.log(res.data.Countries);
         const sortedData = [].concat(res.data.Countries)
          sortedData.map((i, index) => 
-        //   {const Recovered = i.TotalRecovered / i.TotalConfirmed * 100},
+          axios.get('https://api.covid19api.com/dayone/country/' + i.Slug + '/status/confirmed').then(res => {
+          //console.log(res.data)  
+          res.data.map((day) => {
+              const chartdata = (i.Country + day.Cases)
+              console.log(day.Country + ' ' + day.Cases)
+              //var ChartData = [day.Cases]
+              //ChartData.push(day.Cases)
+              
+              //console.log(i)
+            })
+            
+            
+            
+          }) +
+          console.log(i) +
+          //console.log(i.ChartData)
           (i.Recovered = i.TotalRecovered / i.TotalConfirmed * 100) +
           (i.Deaths = i.TotalDeaths / i.TotalConfirmed * 100) +
           (i.Recovered ? '' : i.Recovered = 0) +
@@ -190,7 +206,7 @@ export default class Data extends React.Component {
             <Table sortable celled fixed>
             <thead>
               <tr>
-              <Table.HeaderCell colSpan={2}></Table.HeaderCell>
+              <Table.HeaderCell colSpan={3}></Table.HeaderCell>
               <Table.HeaderCell colSpan={2}>Cases</Table.HeaderCell>
               <Table.HeaderCell colSpan={2}>Recovered</Table.HeaderCell>
               <Table.HeaderCell colSpan={2}>Deaths</Table.HeaderCell>
@@ -210,6 +226,9 @@ export default class Data extends React.Component {
                       }
                     >
                       Country
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
+                      Cases over time
                     </Table.HeaderCell>
                     <Table.HeaderCell
                       sorted={column === 'TotalConfirmed' ? direction : null}
@@ -307,6 +326,19 @@ export default class Data extends React.Component {
                 <tr>
                       <td></td>
                       <td>🌍 World</td>
+                      <td>
+                        <Trend
+                          smooth
+                          autoDraw
+                          autoDrawDuration={3000}
+                          autoDrawEasing="ease-out"
+                          data={[0,2,5,9,5,10,3,5,0,0,1,8,2,9,0]}
+                          gradient={['#222']}
+                          radius={8.2}
+                          strokeWidth={5}
+                          strokeLinecap={'square'}
+                          />
+                      </td>
                       <td><NumberFormat value={world.TotalConfirmed} displayType={'text'} thousandSeparator={true} /></td>
                       <td><NumberFormat value={world.NewConfirmed} displayType={'text'} thousandSeparator={true} /></td>
                       <td><NumberFormat value={world.TotalRecovered} displayType={'text'} thousandSeparator={true} /></td>
@@ -323,6 +355,19 @@ export default class Data extends React.Component {
                   <td><FlagIcon code={i.CountryCode.toLowerCase()} />
                   {' '}
                   {i.Country}
+                  </td>
+                  <td>
+                    <Trend
+                    smooth
+                    autoDraw
+                    autoDrawDuration={3000}
+                    autoDrawEasing="ease-out"
+                    data={[0,2,5,9,5,10,3,5,0,0,1,8,2,9,0]}
+                    gradient={['#222']}
+                    radius={8.2}
+                    strokeWidth={5}
+                    strokeLinecap={'square'}
+                    />
                   </td>
                   <td><NumberFormat value={i.TotalConfirmed} displayType={'text'} thousandSeparator={true}/></td>
                   <td><NumberFormat value={i.NewConfirmed} displayType={'text'} thousandSeparator={true}/></td>

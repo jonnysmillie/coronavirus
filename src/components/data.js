@@ -75,10 +75,7 @@ export default class Data extends React.Component {
          )
         const world = res.data.Global
         
-        console.log(sortedData)
-
-        const ratios = sortedData.sort((a, b) => b.Deaths - a.Deaths)
-        console.log(ratios)
+        // console.log(sortedData)
         const data = sortedData.sort((a, b) => b.TotalConfirmed - a.TotalConfirmed)
         this.setState({
           data: data,
@@ -111,7 +108,7 @@ export default class Data extends React.Component {
         direction: 'descending',
         active: clickedColumn
       })
-      console.log(clickedColumn)
+      // console.log(clickedColumn)
 
       return
     }

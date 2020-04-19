@@ -183,7 +183,7 @@ export default class Data extends React.Component {
               <Table.HeaderCell colSpan={2}>Cases</Table.HeaderCell>
               <Table.HeaderCell colSpan={2}>Recovered</Table.HeaderCell>
               <Table.HeaderCell colSpan={2}>Deaths</Table.HeaderCell>
-              <Table.HeaderCell colSpan={2}>Ratios</Table.HeaderCell>
+              <Table.HeaderCell colSpan={2}>Percentages</Table.HeaderCell>
               </tr>
             </thead>
               <thead>

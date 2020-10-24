@@ -29,6 +29,12 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-custom-api",
+      options: {
+          url: "https://api.covid19api.com/summary"
+      }
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [

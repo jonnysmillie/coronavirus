@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import Link from 'gatsby-link'
 import styled from 'styled-components'
 import _ from 'lodash'
 import { getCode, overwrite} from 'country-list'
@@ -12,23 +13,15 @@ import moment from 'moment'
 
 
 
-// const Table = styled.table`
-//   width: 100%; 
-//   border-collapse: collapse; 
-//   th {
-//     text-align: left;
-//     background: rgba(255, 87, 2, 0.2);
-//   }
-//   tr:nth-child(odd) {
-//     background-color: #fcfcfc;
-//   }
-//   td {
-//     padding: 15px;
-//     @media(max-width: 678px){
-//       padding:0;
-//     }
-//   }
-// `
+const CountryLink = styled(Link)`
+  box-shadow: none;
+  text-shadow: none;
+  background-image: none;
+  color: #020202;
+  :hover .name {
+    text-decoration: underline;
+  }
+`
 
 
 export default class Data extends React.Component {
@@ -320,9 +313,12 @@ export default class Data extends React.Component {
                 .map((i, index) => 
                 <tr key={index}>
                   <td>{index + 1}</td>
-                  <td><FlagIcon code={i.CountryCode.toLowerCase()} />
-                  {' '}
-                  {i.Country}
+                  <td>
+                    <CountryLink to={i.Slug + '/'} alt={i.Country}>
+                      <FlagIcon code={i.CountryCode.toLowerCase()} />
+                      {' '}
+                      <span className='name'>{i.Country}</span>
+                    </CountryLink>
                   </td>
                   <td><NumberFormat value={i.TotalConfirmed} displayType={'text'} thousandSeparator={true}/></td>
                   <td><NumberFormat value={i.NewConfirmed} displayType={'text'} thousandSeparator={true}/></td>

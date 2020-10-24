@@ -6,7 +6,7 @@ const HomeTitle = styled.h1`
   text-align: center;
   width: 100%;
 `
-const PageTitle = styled.h3`
+const Description = styled.p`
   text-align: center;
   width: 100%;
 `
@@ -25,34 +25,20 @@ const Footer = styled.footer`
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
+    const { title, children } = this.props
 
-    if (location.pathname === rootPath) {
-      header = (
-        <HomeTitle>
-          <Link
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </HomeTitle>
-      )
-    } else {
-      header = (
-        <PageTitle>
-          <Link
-            to={`/`}
-          >
-            {title}
-          </Link>
-        </PageTitle>
-      )
-    }
     return (
       <div>
-        <header>{header}</header>
+        <header>
+          <HomeTitle>
+            <Link
+              to={`/`}
+            >
+            Coronavirus / Covid-19 🦠
+            </Link>
+          </HomeTitle>
+          <Description>Track the spread of the pandemic by country.</Description>
+        </header>
         <Main>{children}</Main>
         <Footer>
           <p>All data from: <a href="https://covid19api.com/">https://covid19api.com/</a></p>

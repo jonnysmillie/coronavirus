@@ -77,7 +77,7 @@ const CountryPage = (props) => (
               New recovered: 
             </ColHeader>
             <ColBody>
-            <NumberFormat value={props.pageContext.totalRecovered} displayType={'text'} thousandSeparator={true} />
+            <NumberFormat value={props.pageContext.newRecovered} displayType={'text'} thousandSeparator={true} />
             </ColBody>
           </Col>
       </Grid>

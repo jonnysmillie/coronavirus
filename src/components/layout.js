@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from 'styled-components';
+import moment from 'moment'
 
 const HomeTitle = styled.h1`
   text-align: center;
@@ -23,6 +24,10 @@ const Footer = styled.footer`
   padding: 2rem 20%;
 `
 
+const DateTitle = styled.h2`
+  text-align: center;
+` 
+
 class Layout extends React.Component {
   render() {
     const { title, children } = this.props
@@ -38,6 +43,9 @@ class Layout extends React.Component {
             </Link>
           </HomeTitle>
           <Description>Track the spread of the pandemic by country.</Description>
+          <DateTitle>
+            {moment().format('dddd') + ' ' + moment().format('MMMM Do YYYY')}
+          </DateTitle>
         </header>
         <Main>{children}</Main>
         <Footer>

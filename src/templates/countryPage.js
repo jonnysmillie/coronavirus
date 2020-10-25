@@ -27,12 +27,15 @@ const ColBody = styled.div`
 const CountryPage = (props) => (
   <Layout>
     <main>
-      <h1><FlagIcon code={props.pageContext.code.toLowerCase()} /> {props.pageContext.name}</h1>
-      <p>{props.pageContext.slug}</p>
+      <h1>
+        <FlagIcon code={props.pageContext.code.toLowerCase()} />
+        {' '}
+        {props.pageContext.name}
+        </h1>
       <Grid>
         <Col>
           <ColHeader>
-            Total cases: 
+            Total cases
           </ColHeader>
           <ColBody>
             <NumberFormat value={props.pageContext.totalCases} displayType={'text'} thousandSeparator={true} />
@@ -40,7 +43,7 @@ const CountryPage = (props) => (
         </Col>
           <Col>
             <ColHeader>
-              Total deaths: 
+              Total deaths
             </ColHeader>
             <ColBody>
             <NumberFormat value={props.pageContext.totalDeaths} displayType={'text'} thousandSeparator={true} />
@@ -48,7 +51,7 @@ const CountryPage = (props) => (
           </Col>
           <Col>
             <ColHeader>
-            Total recovered: 
+            Total recovered
             </ColHeader>
             <ColBody>
             <NumberFormat value={props.pageContext.totalRecovered} displayType={'text'} thousandSeparator={true} />
@@ -58,7 +61,7 @@ const CountryPage = (props) => (
       <Grid>
         <Col>
           <ColHeader>
-            New cases: 
+            New cases
           </ColHeader>
           <ColBody>
           <NumberFormat value={props.pageContext.newCases} displayType={'text'} thousandSeparator={true} />
@@ -66,7 +69,7 @@ const CountryPage = (props) => (
         </Col>
           <Col>
           <ColHeader>
-            New deaths: 
+            New deaths
           </ColHeader>
           <ColBody>
           <NumberFormat value={props.pageContext.newDeaths} displayType={'text'} thousandSeparator={true} />
@@ -74,7 +77,7 @@ const CountryPage = (props) => (
           </Col>
           <Col>
             <ColHeader>
-              New recovered: 
+              New recovered
             </ColHeader>
             <ColBody>
             <NumberFormat value={props.pageContext.newRecovered} displayType={'text'} thousandSeparator={true} />

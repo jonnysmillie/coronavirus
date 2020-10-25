@@ -8,7 +8,6 @@ import FlagIcon from './FlagIcon.js'
 import NumberFormat from 'react-number-format'
 import { Table } from 'semantic-ui-react'
 import Loader from 'react-loader-spinner'
-import moment from 'moment'
 // const { getCode, getName } = require('country-list');
 
 
@@ -177,160 +176,157 @@ export default class Data extends React.Component {
 
     return (
           <div>
-            <h2>
-              {moment().format('dddd') + ' ' + moment().format('MMMM Do YYYY')}
-            </h2>
-            <Table sortable celled fixed>
-            <thead>
-              <tr>
-              <Table.HeaderCell colSpan={2}></Table.HeaderCell>
-              <Table.HeaderCell colSpan={2}>Cases</Table.HeaderCell>
-              <Table.HeaderCell colSpan={2}>Recovered</Table.HeaderCell>
-              <Table.HeaderCell colSpan={2}>Deaths</Table.HeaderCell>
-              <Table.HeaderCell colSpan={2}>Percentages</Table.HeaderCell>
-              </tr>
-            </thead>
+              <Table sortable celled fixed>
               <thead>
                 <tr>
-                    <th></th>
-                    <Table.HeaderCell
-                      sorted={column === 'Country' ? direction : null}
-                      onClick={this.handleSort('Country')}
-                      className={
-                        active === 'Country' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                      Country
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={column === 'TotalConfirmed' ? direction : null}
-                      onClick={this.handleSort('TotalConfirmed')}
-                      className={
-                        active === 'TotalConfirmed' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                      Total
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={column === 'NewConfirmed' ? direction : null}
-                      onClick={this.handleSort('NewConfirmed')}
-                      className={
-                        active === 'NewConfirmed' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                      New
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={column === 'TotalRecovered' ? direction : null}
-                      onClick={this.handleSort('TotalRecovered')}
-                      className={
-                        active === 'TotalRecovered' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                      Total
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={column === 'NewRecovered' ? direction : null}
-                      onClick={this.handleSort('NewRecovered')}
-                      className={
-                        active === 'NewRecovered' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                      New
-                    </Table.HeaderCell>
-                    
-                    <Table.HeaderCell
-                      sorted={column === 'TotalDeaths' ? direction : null}
-                      onClick={this.handleSort('TotalDeaths')}
-                      className={
-                        active === 'TotalDeaths' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                      Total
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={column === 'NewDeaths' ? direction : null}
-                      onClick={this.handleSort('NewDeaths')}
-                      className={
-                        active === 'NewDeaths' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                      New
-                    </Table.HeaderCell>                    
-                    <Table.HeaderCell
-                      sorted={column === 'Recovered' ? direction : null}
-                      onClick={this.handleSort('Recovered')}
-                      className={
-                        active === 'Recovered' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                    Recovered
-                    </Table.HeaderCell>
-                    <Table.HeaderCell
-                      sorted={column === 'Deaths' ? direction : null}
-                      onClick={this.handleSort('Deaths')}
-                      className={
-                        active === 'Deaths' ? 'active' : null
-                        + ' ' +
-                        direction === 'descending' ? 'descending' : 'ascending'
-                      }
-                    >
-                    Deaths
-                    </Table.HeaderCell>
-                  </tr>
-              </thead>
-              <tbody>
-                {console.log()}
-                <tr>
-                      <td></td>
-                      <td>🌍 World</td>
-                      <td><NumberFormat value={world.TotalConfirmed} displayType={'text'} thousandSeparator={true} /></td>
-                      <td><NumberFormat value={world.NewConfirmed} displayType={'text'} thousandSeparator={true} /></td>
-                      <td><NumberFormat value={world.TotalRecovered} displayType={'text'} thousandSeparator={true} /></td>
-                      <td><NumberFormat value={world.NewRecovered} displayType={'text'} thousandSeparator={true} /></td>
-                      <td><NumberFormat value={world.TotalDeaths} displayType={'text'} thousandSeparator={true} /></td>
-                      <td><NumberFormat value={world.NewDeaths} displayType={'text'} thousandSeparator={true} /></td>                      
-                      <td><NumberFormat value={world.TotalRecovered / world.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2} /></td>      
-                      <td><NumberFormat value={world.TotalDeaths / world.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2} /></td>
+                <Table.HeaderCell colSpan={2}></Table.HeaderCell>
+                <Table.HeaderCell colSpan={2}>Cases</Table.HeaderCell>
+                <Table.HeaderCell colSpan={2}>Recovered</Table.HeaderCell>
+                <Table.HeaderCell colSpan={2}>Deaths</Table.HeaderCell>
+                <Table.HeaderCell colSpan={2}>Percentages</Table.HeaderCell>
                 </tr>
-                {data
-                .map((i, index) => 
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <CountryLink to={i.Slug + '/'} alt={i.Country}>
-                      <FlagIcon code={i.CountryCode.toLowerCase()} />
-                      {' '}
-                      <span className='name'>{i.Country}</span>
-                    </CountryLink>
-                  </td>
-                  <td><NumberFormat value={i.TotalConfirmed} displayType={'text'} thousandSeparator={true}/></td>
-                  <td><NumberFormat value={i.NewConfirmed} displayType={'text'} thousandSeparator={true}/></td>
-                  <td><NumberFormat value={i.TotalRecovered} displayType={'text'} thousandSeparator={true}/></td>
-                  <td><NumberFormat value={i.NewRecovered} displayType={'text'} thousandSeparator={true}/></td>
-                  <td><NumberFormat value={i.TotalDeaths} displayType={'text'} thousandSeparator={true}/></td>
-                  <td><NumberFormat value={i.NewDeaths} displayType={'text'} thousandSeparator={true}/></td>                  
-                  <td><NumberFormat value={i.Recovered} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
-                  <td><NumberFormat value={i.Deaths} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
-                </tr>)}
-              </tbody>
-            </Table>
+              </thead>
+                <thead>
+                  <tr>
+                      <th></th>
+                      <Table.HeaderCell
+                        sorted={column === 'Country' ? direction : null}
+                        onClick={this.handleSort('Country')}
+                        className={
+                          active === 'Country' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                        Country
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={column === 'TotalConfirmed' ? direction : null}
+                        onClick={this.handleSort('TotalConfirmed')}
+                        className={
+                          active === 'TotalConfirmed' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                        Total
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={column === 'NewConfirmed' ? direction : null}
+                        onClick={this.handleSort('NewConfirmed')}
+                        className={
+                          active === 'NewConfirmed' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                        New
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={column === 'TotalRecovered' ? direction : null}
+                        onClick={this.handleSort('TotalRecovered')}
+                        className={
+                          active === 'TotalRecovered' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                        Total
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={column === 'NewRecovered' ? direction : null}
+                        onClick={this.handleSort('NewRecovered')}
+                        className={
+                          active === 'NewRecovered' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                        New
+                      </Table.HeaderCell>
+                      
+                      <Table.HeaderCell
+                        sorted={column === 'TotalDeaths' ? direction : null}
+                        onClick={this.handleSort('TotalDeaths')}
+                        className={
+                          active === 'TotalDeaths' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                        Total
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={column === 'NewDeaths' ? direction : null}
+                        onClick={this.handleSort('NewDeaths')}
+                        className={
+                          active === 'NewDeaths' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                        New
+                      </Table.HeaderCell>                    
+                      <Table.HeaderCell
+                        sorted={column === 'Recovered' ? direction : null}
+                        onClick={this.handleSort('Recovered')}
+                        className={
+                          active === 'Recovered' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                      Recovered
+                      </Table.HeaderCell>
+                      <Table.HeaderCell
+                        sorted={column === 'Deaths' ? direction : null}
+                        onClick={this.handleSort('Deaths')}
+                        className={
+                          active === 'Deaths' ? 'active' : null
+                          + ' ' +
+                          direction === 'descending' ? 'descending' : 'ascending'
+                        }
+                      >
+                      Deaths
+                      </Table.HeaderCell>
+                    </tr>
+                </thead>
+                <tbody>
+                  {console.log()}
+                  <tr>
+                        <td></td>
+                        <td>🌍 World</td>
+                        <td><NumberFormat value={world.TotalConfirmed} displayType={'text'} thousandSeparator={true} /></td>
+                        <td><NumberFormat value={world.NewConfirmed} displayType={'text'} thousandSeparator={true} /></td>
+                        <td><NumberFormat value={world.TotalRecovered} displayType={'text'} thousandSeparator={true} /></td>
+                        <td><NumberFormat value={world.NewRecovered} displayType={'text'} thousandSeparator={true} /></td>
+                        <td><NumberFormat value={world.TotalDeaths} displayType={'text'} thousandSeparator={true} /></td>
+                        <td><NumberFormat value={world.NewDeaths} displayType={'text'} thousandSeparator={true} /></td>                      
+                        <td><NumberFormat value={world.TotalRecovered / world.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2} /></td>      
+                        <td><NumberFormat value={world.TotalDeaths / world.TotalConfirmed * 100} displayType={'text'} thousandSeparator={true} decimalScale={2} /></td>
+                  </tr>
+                  {data
+                  .map((i, index) => 
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <CountryLink to={'/' + i.Slug} alt={i.Country}>
+                        <FlagIcon code={i.CountryCode.toLowerCase()} />
+                        {' '}
+                        <span className='name'>{i.Country}</span>
+                      </CountryLink>
+                    </td>
+                    <td><NumberFormat value={i.TotalConfirmed} displayType={'text'} thousandSeparator={true}/></td>
+                    <td><NumberFormat value={i.NewConfirmed} displayType={'text'} thousandSeparator={true}/></td>
+                    <td><NumberFormat value={i.TotalRecovered} displayType={'text'} thousandSeparator={true}/></td>
+                    <td><NumberFormat value={i.NewRecovered} displayType={'text'} thousandSeparator={true}/></td>
+                    <td><NumberFormat value={i.TotalDeaths} displayType={'text'} thousandSeparator={true}/></td>
+                    <td><NumberFormat value={i.NewDeaths} displayType={'text'} thousandSeparator={true}/></td>                  
+                    <td><NumberFormat value={i.Recovered} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
+                    <td><NumberFormat value={i.Deaths} displayType={'text'} thousandSeparator={true} decimalScale={2}/></td>
+                  </tr>)}
+                </tbody>
+              </Table>
           </div>
     )
   }

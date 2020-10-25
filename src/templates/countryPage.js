@@ -2,15 +2,26 @@ import React from "react"
 import Layout from "../components/layout"
 import FlagIcon from '../components/FlagIcon.js'
 import styled from 'styled-components'
+import NumberFormat from 'react-number-format'
 
 const Grid = styled.div`
   display: flex;
   flex-flow: row nowrap;
   height: 50px;
   justify-content: center;
+  margin: 0rem 3rem 5rem 3rem;
 `
 const Col = styled.div`
-  margin: 25px;
+  margin: 2rem;
+`
+
+const ColHeader = styled.div`
+  background-color: rgba(255, 87, 0, 0.7);
+  padding: 0.5rem;
+`
+const ColBody = styled.div`
+  font-weight: bold;
+  font-size: 2rem;
 `
 
 const CountryPage = (props) => (
@@ -20,30 +31,54 @@ const CountryPage = (props) => (
       <p>{props.pageContext.slug}</p>
       <Grid>
         <Col>
-          New cases: 
-          {props.pageContext.newCases}
+          <ColHeader>
+            Total cases: 
+          </ColHeader>
+          <ColBody>
+            <NumberFormat value={props.pageContext.totalCases} displayType={'text'} thousandSeparator={true} />
+          </ColBody>
         </Col>
           <Col>
-            New deaths: 
-            {props.pageContext.newDeaths}
+            <ColHeader>
+              Total deaths: 
+            </ColHeader>
+            <ColBody>
+            <NumberFormat value={props.pageContext.totalDeaths} displayType={'text'} thousandSeparator={true} />
+            </ColBody>
           </Col>
           <Col>
-            New recovered: 
-            {props.pageContext.newRecovered}
+            <ColHeader>
+            Total recovered: 
+            </ColHeader>
+            <ColBody>
+            <NumberFormat value={props.pageContext.totalRecovered} displayType={'text'} thousandSeparator={true} />
+            </ColBody>
           </Col>
       </Grid>
       <Grid>
         <Col>
-          Total cases: 
-          {props.pageContext.totalCases}
+          <ColHeader>
+            New cases: 
+          </ColHeader>
+          <ColBody>
+          <NumberFormat value={props.pageContext.newCases} displayType={'text'} thousandSeparator={true} />
+          </ColBody>
         </Col>
           <Col>
-            Total deaths: 
-            {props.pageContext.totalDeaths}
+          <ColHeader>
+            New deaths: 
+          </ColHeader>
+          <ColBody>
+          <NumberFormat value={props.pageContext.newDeaths} displayType={'text'} thousandSeparator={true} />
+          </ColBody>
           </Col>
           <Col>
-            Total recovered: 
-            {props.pageContext.totalRecovered}
+            <ColHeader>
+              New recovered: 
+            </ColHeader>
+            <ColBody>
+            <NumberFormat value={props.pageContext.totalRecovered} displayType={'text'} thousandSeparator={true} />
+            </ColBody>
           </Col>
       </Grid>
     </main>
